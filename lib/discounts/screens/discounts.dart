@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:sales_app/discounts/components/discount_card.dart';
 import 'package:sales_app/discounts/models/discount.dart';
@@ -9,9 +7,11 @@ class DiscountsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: Platform.isIOS ? 60 : 10),
-      child: ListView.builder(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Endirimler'),
+      ),
+      body: ListView.builder(
         itemCount: discounts.length,
         itemBuilder: (ctx, index) {
           return DiscountCard(discount: discounts[index]);
@@ -42,5 +42,12 @@ final discounts = [
         'https://ceylongreenroots.com/wp-content/uploads/2021/08/black_tea.png',
     categoryName: 'Cay mehsullari',
     price: '8.96',
+  ),
+  Discount(
+    id: '4',
+    imageUrl:
+        'https://www.theauric.com/cdn/shop/articles/front-view-fresh-fruit-cocktails-with-fresh-fruit-slices-ice-cooling-blue-drink-juice-cocktail-fruit-color_1500x.jpg?v=1648460284',
+    categoryName: 'Ickiler',
+    price: '16.5',
   ),
 ];

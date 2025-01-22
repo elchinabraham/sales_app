@@ -57,21 +57,53 @@ class DiscountItemCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 5),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 1, horizontal: 4),
-                      decoration: BoxDecoration(
-                        color: Colors.yellow,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Text(
-                        '${discountItem.price} ₼',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 13,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Stack(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(bottom: 5),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 1, horizontal: 4),
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Text(
+                                '${discountItem.price} ₼',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            Positioned.fill(
+                              child: CustomPaint(
+                                painter: DiagonalLinePainter(),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
+                        const SizedBox(width: 6),
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 5),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 1, horizontal: 4),
+                          decoration: BoxDecoration(
+                            color: Colors.yellow,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Text(
+                            '${discountItem.discountPrice} ₼',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -81,5 +113,25 @@ class DiscountItemCard extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class DiagonalLinePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.yellow
+      ..strokeWidth = 1.2;
+
+    canvas.drawLine(
+      Offset(size.width - 2, 2),
+      Offset(2, size.height - 8),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
