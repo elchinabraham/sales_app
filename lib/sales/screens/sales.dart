@@ -9,7 +9,7 @@ class SalesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Satis Melumatlari'),
+        title: const Text('Satış Məlumatları'),
       ),
       body: Column(
         children: [
@@ -26,12 +26,13 @@ class SalesScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
                     ),
+                    elevation: 2,
                     child: TextField(
                       readOnly: true,
                       controller: TextEditingController(text: '2025.01.01'),
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.calendar_month),
-                        labelText: 'Tarixden',
+                        labelText: 'Tarixdən',
                         border: InputBorder.none,
                       ),
                       style: const TextStyle(fontSize: 13),
@@ -41,6 +42,7 @@ class SalesScreen extends StatelessWidget {
                 SizedBox(
                   width: 160,
                   child: Card(
+                    elevation: 2,
                     color: const Color.fromARGB(250, 250, 250, 250),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(6),
@@ -50,7 +52,7 @@ class SalesScreen extends StatelessWidget {
                       controller: TextEditingController(text: '2025.01.31'),
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.calendar_month),
-                        labelText: 'Tarixe',
+                        labelText: 'Tarixə',
                         border: InputBorder.none,
                       ),
                       style: const TextStyle(fontSize: 13),
@@ -109,5 +111,12 @@ final sales = [
     address: '22b Zığ şossesi, Bakı',
     date: '2024.06.19 21:37',
     price: '11.2',
+  ),
+  Sale(
+    id: '6',
+    storeName: 'Bazarstore',
+    address: 'Nəbz klinikasının yanı, 38 Tofiq Abbasov, Bakı',
+    date: '2023.12.15 16:40',
+    price: '46.80',
   ),
 ];

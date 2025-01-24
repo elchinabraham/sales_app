@@ -20,8 +20,7 @@ class SalesCardTemplate extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10, left: 12, bottom: 10),
           child: Row(
             children: [
-              SizedBox(
-                width: 270,
+              Flexible(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -82,25 +81,28 @@ class SalesCardTemplate extends StatelessWidget {
                   ],
                 ),
               ),
-              Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 7,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      '${sale.price} ₼',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
+              SizedBox(
+                width: 100,
+                child: Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 5,
+                        horizontal: 7,
                       ),
-                    ),
-                  )
-                ],
+                      decoration: BoxDecoration(
+                        color: Colors.yellow,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: Text(
+                        '${sale.price} ₼',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
