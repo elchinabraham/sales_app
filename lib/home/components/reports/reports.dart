@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sales_app/campaigns/screens/campaigns.dart';
 import 'package:sales_app/home/components/reports/sales_report_card.dart';
+import 'package:sales_app/sales/screens/sales.dart';
 
 import 'campaigns_report_card.dart';
 
@@ -16,7 +17,13 @@ class Reports extends StatelessWidget {
         child: Row(
           children: [
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) => const SalesScreen(),
+                  ),
+                );
+              },
               child: const SalesReportCard(),
             ),
             InkWell(
