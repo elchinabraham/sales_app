@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
             } else if (value.selectedIndex == 1) {
               return const DiscountsScreen();
             } else if (value.selectedIndex == 2) {
-              return const NotificationsScreen();
+              return NotificationsScreen();
             } else {
               return const Center(child: Text('No screen was found'));
             }

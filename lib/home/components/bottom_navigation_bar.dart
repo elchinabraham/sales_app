@@ -77,7 +77,7 @@ class MyBottomNavigationBarCupertino extends StatelessWidget {
         } else if (index == 1) {
           return const DiscountsScreen();
         } else if (index == 2) {
-          return const NotificationsScreen();
+          return NotificationsScreen();
         } else {
           return const Center(child: Text('No screen was found'));
         }
