@@ -6,7 +6,7 @@ class MyNotification {
   final String content;
   final String date;
   final String time;
-  final bool isSeen;
+  bool isSeen;
 
   MyNotification({
     required this.id,

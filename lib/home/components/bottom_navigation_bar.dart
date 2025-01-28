@@ -42,6 +42,11 @@ class MyBottomNavigationBar extends StatelessWidget {
               label: 'Bildirişlər',
               activeIcon: Badge(child: Icon(Icons.notifications, size: 25)),
             ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings_outlined, size: 25),
+              label: 'Tənzimləmələr',
+              activeIcon: Icon(Icons.settings, size: 25),
+            ),
           ],
         );
       },
@@ -68,6 +73,10 @@ class MyBottomNavigationBarCupertino extends StatelessWidget {
           BottomNavigationBarItem(
             icon: Badge(child: Icon(CupertinoIcons.archivebox)),
             label: 'Bildirişlər',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(CupertinoIcons.settings),
+            label: 'Tənzimləmələr',
           ),
         ],
       ),

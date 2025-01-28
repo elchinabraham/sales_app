@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sales_app/notifications/components/notification_alert_dialog.dart';
 import 'package:sales_app/notifications/components/notification_card.dart';
-import 'package:sales_app/notifications/models/notification.dart';
+import 'package:sales_app/notifications/providers/notification_notifier.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
+
+  Future<void> _showMyDialog(
+      BuildContext context, String title, String content) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return NotificationAlertDialog(title: title, content: content);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +35,46 @@ class NotificationsScreen extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(Icons.check),
           ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.delete),
+          ),
         ],
       ),
       body: Padding(
         padding: const EdgeInsets.only(bottom: 10),
-        child: ListView.builder(
-          itemCount: notifications.length,
-          itemBuilder: (ctx, index) {
-            return NotificationCard(
-              notification: notifications[index],
-              isDateRequired: (index == 0 ||
-                  notifications[index].date != notifications[index - 1].date),
+        child: Consumer<NotificationNotifier>(
+          builder: (context, value, child) {
+            return ListView.builder(
+              itemCount: value.notifications.length,
+              itemBuilder: (ctx, index) {
+                final notification = value.notifications[index];
+
+                return Dismissible(
+                  key: Key(notification.id),
+                  direction: DismissDirection.endToStart,
+                  dismissThresholds: const {DismissDirection.endToStart: 0.5},
+                  confirmDismiss: (direction) async {
+                    value.removeNotification(notification.id);
+                    return true;
+                  },
+                  child: NotificationCard(
+                    notification: notification,
+                    isDateRequired: (index == 0 ||
+                        notification.date !=
+                            value.notifications[index - 1].date),
+                    onSelectedItem: () async {
+                      value.readNotification(notification.id);
+
+                      await _showMyDialog(
+                        context,
+                        notification.title,
+                        notification.content,
+                      );
+                    },
+                  ),
+                );
+              },
             );
           },
         ),
@@ -40,60 +82,3 @@ class NotificationsScreen extends StatelessWidget {
     );
   }
 }
-
-final notifications = [
-  MyNotification(
-    id: '1',
-    title: 'Al Market',
-    content:
-        '2025.02.01 tarixindən etibarən mağazalar şəbəkəsində endirimli məhsullar üçün qazanacağınız keşbekləri ay sonunu gözləmədən istifadə edə bilərsiniz 🙂',
-    date: '27.01.2025',
-    time: '16:00',
-    isSeen: false,
-  ),
-  MyNotification(
-    id: '2',
-    title: 'Bazarstore',
-    content:
-        '"Bazarstore" Əbdülvahab Salamzadə küçəsində açılan yeni mağazasını istifadəyə verdi',
-    date: '27.01.2025',
-    time: '10:45',
-    isSeen: false,
-  ),
-  MyNotification(
-    id: '3',
-    title: 'Bazarstore',
-    content:
-        '"Bazarstore" Həsən Əliyev küçəsində yerləşən yeni mağazasını müştərilərin ixtiyarına verdi',
-    date: '26.01.2025',
-    time: '09:30',
-    isSeen: false,
-  ),
-  MyNotification(
-    id: '4',
-    title: 'Bazarstore',
-    content:
-        'Bazarstore - da super maqazin fürsətləri. Yeni super maqazin çıxdı. Endirimlərə baxmaq üçün klikləyin. ',
-    date: '26.01.2025',
-    time: '09:30',
-    isSeen: true,
-  ),
-  MyNotification(
-    id: '5',
-    title: 'Bazarstore Endirimləri',
-    content:
-        '2025.02.01 tarixindən etibarən mağazalar şəbəkəsində endirimli məhsullar üçün qazanacağınız keşbekləri ay sonunu gözləmədən istifadə edə bilərsiniz 🙂',
-    date: '26.01.2025',
-    time: '09:30',
-    isSeen: false,
-  ),
-  MyNotification(
-    id: '6',
-    title: 'Sistem',
-    content:
-        '2025.02.01 tarixindən etibarən mağazalar şəbəkəsində endirimli məhsullar üçün qazanacağınız keşbekləri ay sonunu gözləmədən istifadə edə bilərsiniz 🙂',
-    date: '25.01.2025',
-    time: '09:30',
-    isSeen: true,
-  ),
-];

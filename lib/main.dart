@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sales_app/home/providers/bottom_navigation_notifier.dart';
+import 'package:sales_app/notifications/providers/notification_notifier.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home/screens/home.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (ctx) => BottomNavigationNotifier(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => NotificationNotifier(),
         ),
       ],
       child: MaterialApp(
