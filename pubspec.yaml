@@ -68,6 +68,7 @@ flutter:
     - assets/images/logo.png
     - assets/images/signin.png
     - assets/images/flutter-icon.png
+    - assets/images/az-flag.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

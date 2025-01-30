@@ -9,7 +9,10 @@ class DiscountsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Endirimler'),
+        title: const Text(
+          'Endirimlər',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
       ),
       body: ListView.builder(
         itemCount: discounts.length,

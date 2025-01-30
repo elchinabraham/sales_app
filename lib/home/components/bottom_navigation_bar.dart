@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sales_app/settings/screens/settings.dart';
 
 import '../../discounts/screens/discounts.dart';
 import '../../notifications/screens/notifications.dart';
@@ -87,6 +88,8 @@ class MyBottomNavigationBarCupertino extends StatelessWidget {
           return const DiscountsScreen();
         } else if (index == 2) {
           return const NotificationsScreen();
+        } else if (index == 3) {
+          return SettingsScreen();
         } else {
           return const Center(child: Text('No screen was found'));
         }

@@ -7,6 +7,7 @@ import 'package:sales_app/home/components/main.dart';
 import 'package:sales_app/home/providers/bottom_navigation_notifier.dart';
 import 'package:sales_app/notifications/screens/notifications.dart';
 
+import '../../settings/screens/settings.dart';
 import '../components/bottom_navigation_bar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -30,6 +31,8 @@ class HomeScreen extends StatelessWidget {
               return const DiscountsScreen();
             } else if (value.selectedIndex == 2) {
               return const NotificationsScreen();
+            } else if (value.selectedIndex == 3) {
+              return SettingsScreen();
             } else {
               return const Center(child: Text('No screen was found'));
             }

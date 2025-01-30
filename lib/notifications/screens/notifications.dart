@@ -26,10 +26,10 @@ class NotificationsScreen extends StatelessWidget {
           width: double.infinity,
           child: Text(
             'Bildirişlər',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {},
